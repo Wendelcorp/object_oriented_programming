@@ -9,21 +9,16 @@ class Rover
     @direction = dir.upcase
   end
 
-  def instruction(inst)
-    if inst == "L"
+  def instructions(input)
+    input.each_char do |instruction|
+    if instruction == "L"
       spin_left
-    elsif inst == "R"
+    elsif instruction == "R"
       spin_right
-    elsif inst == "M"
+    elsif instruction == "M"
       move
     else
       return "No instruction given"
-    end
-  end
-
-  def instructions(input)
-    input.each_char do |move|
-      instruction(move)
     end
   end
 
@@ -84,7 +79,6 @@ rover1 = Rover.new(1, 1, "n")
 #
 # puts rover1.show_position
 
-puts rover1.instructions("LMRMM")
-
+rover1.instructions("RMLMM")
 
 puts rover1.show_position
